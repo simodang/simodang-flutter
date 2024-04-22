@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
                 const Text("Atur kolam anda dari manapun dan kapanpun"),
                 const SizedBox(height: 30),
                 FilledButton(
-                  onPressed: () {
+                  onPressed: () async {
                     controller.authSnackbar();
                   },
                   style: ElevatedButton.styleFrom(
@@ -47,8 +47,8 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const Text("Masuk dengan"),
                 IconButton(
-                  onPressed: () {
-                    controller.authSnackbar();
+                  onPressed: () async {
+                    controller.getGoogleUid();
                   },
                   icon: Image.network(
                     "http://pngimg.com/uploads/google/google_PNG19635.png",
