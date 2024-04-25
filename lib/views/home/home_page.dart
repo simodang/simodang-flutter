@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simodang_flutter/views/home/home_controller.dart';
+import 'package:simodang_flutter/views/landing/landing_page.dart';
+import 'package:simodang_flutter/views/monitor/monitor_page.dart';
+import 'package:simodang_flutter/views/profile/profile_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,24 +12,33 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder:(controller) {
+        final List<Widget> subpages = <Widget>[
+          const LandingPage(),
+          const MonitorPage(),
+          const ProfilePage(),
+        ];
+
         return Scaffold(
-          appBar: AppBar(
-            title: const Text("Home Page"),
-          ),
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Name: ${controller.profile.value.name}"),
-                Text("Email: ${controller.profile.value.email}"),
-                ElevatedButton(
-                  onPressed: () {
-                    controller.logout();
-                  },
-                  child: const Text("Logout"),
-                )
-              ],
-            ),
+            child: subpages.elementAt(controller.currentIndex.value),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: controller.currentIndex.value,
+            onTap: controller.changeIndex,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.monitor),
+                label: 'Monitor',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
           ),
         );
       },

@@ -2,9 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:simodang_flutter/data/datasources/remote/auth/auth_remote_data_source.dart';
-import 'package:simodang_flutter/data/models/profile.dart';
-import 'package:simodang_flutter/state/profile_state.dart';
-import 'package:simodang_flutter/utils/logger/logger_singleton.dart';
+import 'package:simodang_flutter/state/auth_state.dart';
 import 'package:simodang_flutter/utils/secure_storage/secure_storage_singleton.dart';
 
 class LoginController extends GetxController {
@@ -33,35 +31,20 @@ class LoginController extends GetxController {
       final token = await AuthRemoteDataSource().login(result.user!.uid);
       SecureStorageSingleton().storage.write(key: 'jwt', value: token.token);
 
-      goToHome();
+      await Get.find<AuthState>().checkToken();
       return;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<Profile> getProfile() async {
+  @override
+  void onInit() async {
+    super.onInit();
     try {
-      final profile = await AuthRemoteDataSource().getProfile();
-      LoggerSingleton().logger.i(profile);
-      return profile;
+      await Get.find<AuthState>().checkToken();
     } catch (e) {
       rethrow;
     }
-  }
-
-  Future<void> goToHome() async {
-    final token = await SecureStorageSingleton().storage.read(key: 'jwt');
-    if (token != null) {
-      final profile = await getProfile();
-      Get.find<ProfileState>().setProfile(profile);
-      Get.offAllNamed('/home');
-    }
-  }
-
-  @override
-  void onReady() async {
-    super.onReady();
-    goToHome();
   }
 }

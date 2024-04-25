@@ -15,6 +15,6 @@ class Pages {
       name: '/login',
       page: () => const LoginPage(),
       binding: LoginBinding(),
-    )
+    ),
   ];
 }
