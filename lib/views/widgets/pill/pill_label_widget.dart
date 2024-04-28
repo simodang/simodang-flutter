@@ -25,7 +25,7 @@ class PillLabelWidget extends StatelessWidget {
           ),
         ),
         Chip(
-          backgroundColor: isTrue ? Colors.green[100] : Colors.red,
+          backgroundColor: isTrue ? Colors.green[100] : Colors.red[100],
           label: Text(value)
         )
       ],

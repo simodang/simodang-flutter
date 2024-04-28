@@ -30,8 +30,8 @@ class PondConditionWidget extends StatelessWidget {
         ),
         PillLabelWidget(
           label: "Status",
-          value: isFilled ? "Baik" : "Buruk",
-          isTrue: isFilled,
+          value: status ? "Baik" : "Buruk",
+          isTrue: status,
         ),
       ],
     );
