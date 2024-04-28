@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:simodang_flutter/views/detail/detail_binding.dart';
+import 'package:simodang_flutter/views/detail/detail_page.dart';
 import 'package:simodang_flutter/views/home/home_binding.dart';
 import 'package:simodang_flutter/views/home/home_page.dart';
 import 'package:simodang_flutter/views/login/login_binding.dart';
@@ -16,5 +18,10 @@ class Pages {
       page: () => const LoginPage(),
       binding: LoginBinding(),
     ),
+    GetPage(
+      name: '/detail',
+      page: () => DetailPage(),
+      binding: DetailBinding(),
+    )
   ];
 }

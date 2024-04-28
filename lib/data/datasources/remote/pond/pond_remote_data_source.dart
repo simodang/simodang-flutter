@@ -15,4 +15,16 @@ class PondRemoteDataSource {
       rethrow;
     }
   }
+
+  Future<Pond> getPondById(String id) async {
+    try {
+      final response = await DioClient().get(
+        "/ponds/$id",
+      );
+      final pond = Pond.fromJson(response.data as Map<String, dynamic>);
+      return pond;
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

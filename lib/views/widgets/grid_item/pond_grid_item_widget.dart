@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:simodang_flutter/data/models/pond.dart';
 
 class PondGridItemWidget extends StatelessWidget {
@@ -13,7 +14,9 @@ class PondGridItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        
+        Get.toNamed("/detail", arguments: {
+          "pondId": pond.id
+        });
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
