@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:simodang_flutter/views/chart/chart_binding.dart';
+import 'package:simodang_flutter/views/chart/chart_page.dart';
 import 'package:simodang_flutter/views/detail/detail_binding.dart';
 import 'package:simodang_flutter/views/detail/detail_page.dart';
 import 'package:simodang_flutter/views/home/home_binding.dart';
@@ -20,8 +22,13 @@ class Pages {
     ),
     GetPage(
       name: '/detail',
-      page: () => DetailPage(),
+      page: () => const DetailPage(),
       binding: DetailBinding(),
+    ),
+    GetPage(
+      name: '/chart/:id',
+      page: () => const ChartPage(),
+      binding: ChartBinding()
     )
   ];
 }
