@@ -23,6 +23,7 @@ class ChartPage extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.calendar_month),
                 onPressed: () {
+                  Get.toNamed('/date-picker');
                   return;
                 },
               )],
