@@ -22,10 +22,7 @@ class ChartPage extends StatelessWidget {
             actions: [
               IconButton(
                 icon: const Icon(Icons.calendar_month),
-                onPressed: () {
-                  Get.toNamed('/date-picker');
-                  return;
-                },
+                onPressed: controller.pickDate,
               )],
           ),
           body: Column(
@@ -44,6 +41,7 @@ class ChartPage extends StatelessWidget {
                     MetricChartWidget(
                       metrics: controller.metrics,
                       metricType: controller.property ?? 'pH',
+                      isAveraged: controller.isAveraged.value,
                     ),
                     TimeChipWidget(
                       currentIndex: controller.currentIndex.value,

@@ -5,7 +5,7 @@ part 'metric.g.dart';
 
 @JsonSerializable()
 class Metric {
-  final String id;
+  final String? id;
   @JsonKey(fromJson: double.parse)
   final double temperature;
   @JsonKey(fromJson: double.parse)
