@@ -5,6 +5,10 @@ import 'package:simodang_flutter/state/pond_state.dart';
 class MonitorController extends GetxController {
   RxList<Pond> ponds = <Pond>[].obs;
 
+  void addPond() {
+    Get.toNamed('/add-pond');
+  }
+
   @override
   void onInit() {
     super.onInit();

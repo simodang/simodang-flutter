@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:simodang_flutter/views/add_pond/add_pond_binding.dart';
+import 'package:simodang_flutter/views/add_pond/add_pond_page.dart';
 import 'package:simodang_flutter/views/chart/chart_binding.dart';
 import 'package:simodang_flutter/views/chart/chart_page.dart';
 import 'package:simodang_flutter/views/date_picker/date_picker_binding.dart';
@@ -36,6 +38,11 @@ class Pages {
       name: '/date-picker',
       page : () => const DatePickerPage(),
       binding: DatePickerBinding(),
-    )
+    ),
+    GetPage(
+      name: '/add-pond',
+      page: () => const AddPondPage(),
+      binding: AddPondBinding(),
+    ),
   ];
 }

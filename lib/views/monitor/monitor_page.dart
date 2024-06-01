@@ -27,6 +27,10 @@ class MonitorPage extends StatelessWidget {
                 )
               ],
             )
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: controller.addPond,
+            child: const Icon(Icons.add),
           )
         );
       },
