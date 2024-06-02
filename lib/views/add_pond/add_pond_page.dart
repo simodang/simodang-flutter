@@ -44,9 +44,12 @@ class AddPondPage extends StatelessWidget {
                         status: controller.isFilled.value,
                       ),
                     ),
-                    const Step(
-                      title: Text('Perangkat Kolam'),
-                      content: PondDeviceStep(),
+                    Step(
+                      title: const Text('Perangkat Kolam'),
+                      content: PondDeviceStep(
+                        deviceId: controller.deviceId.value,
+                        setDeviceId: controller.setDeviceId,
+                      ),
                     ),
                     const Step(
                       title: Text('Gambar Kolam'),

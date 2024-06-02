@@ -7,6 +7,7 @@ class AddPondController extends GetxController {
   RxString address = ''.obs;
   RxString city = ''.obs;
   RxBool isFilled = false.obs;
+  RxString deviceId = ''.obs;
 
   void nextStep() {
     if (currentStep.value == 3) return;
@@ -16,6 +17,7 @@ class AddPondController extends GetxController {
 
   void previousStep() {
     if (currentStep.value == 0) return;
+    if (currentStep.value == 2) setDeviceId('');
     currentStep.value--;
     update();
   }
@@ -42,6 +44,11 @@ class AddPondController extends GetxController {
 
   void setIsFilled(bool value) {
     isFilled.value = value;
+    update();
+  }
+
+  void setDeviceId(String value) {
+    deviceId.value = value;
     update();
   }
 }

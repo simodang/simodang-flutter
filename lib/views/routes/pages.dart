@@ -11,6 +11,7 @@ import 'package:simodang_flutter/views/home/home_binding.dart';
 import 'package:simodang_flutter/views/home/home_page.dart';
 import 'package:simodang_flutter/views/login/login_binding.dart';
 import 'package:simodang_flutter/views/login/login_page.dart';
+import 'package:simodang_flutter/views/select_device/select_device_page.dart';
 
 class Pages {
   static final pages = [
@@ -43,6 +44,10 @@ class Pages {
       name: '/add-pond',
       page: () => const AddPondPage(),
       binding: AddPondBinding(),
+    ),
+    GetPage(
+      name: '/select-device',
+      page: () => const SelectDevicePage(),
     ),
   ];
 }
