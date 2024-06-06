@@ -25,10 +25,14 @@ class SelectDevicePage extends StatelessWidget {
                 title: Text(device.name),
                 subtitle: Text(device.id),
                 onTap: () {
-                  Get.back(result: device.id);
+                  controller.selectDevice(device.id);
                 },
               );
             },
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: controller.scanQr,
+            child: const Icon(Icons.qr_code),
           )
         );
       },

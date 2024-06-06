@@ -11,6 +11,8 @@ import 'package:simodang_flutter/views/home/home_binding.dart';
 import 'package:simodang_flutter/views/home/home_page.dart';
 import 'package:simodang_flutter/views/login/login_binding.dart';
 import 'package:simodang_flutter/views/login/login_page.dart';
+import 'package:simodang_flutter/views/qr/qr_binding.dart';
+import 'package:simodang_flutter/views/qr/qr_page.dart';
 import 'package:simodang_flutter/views/select_device/select_device_page.dart';
 
 class Pages {
@@ -49,5 +51,10 @@ class Pages {
       name: '/select-device',
       page: () => const SelectDevicePage(),
     ),
+    GetPage(
+      name: '/qr',
+      page: () => const QrPage(),
+      binding: QrBinding(),
+    )
   ];
 }
