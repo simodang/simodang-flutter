@@ -8,6 +8,7 @@ class AddPondController extends GetxController {
   RxString city = ''.obs;
   RxBool isFilled = false.obs;
   RxString deviceId = ''.obs;
+  RxString imagePath = ''.obs;
 
   void nextStep() {
     if (currentStep.value == 3) return;
@@ -49,6 +50,11 @@ class AddPondController extends GetxController {
 
   void setDeviceId(String value) {
     deviceId.value = value;
+    update();
+  }
+
+  void setImagePath(String value) {
+    imagePath.value = value;
     update();
   }
 }
