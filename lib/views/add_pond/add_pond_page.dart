@@ -21,46 +21,49 @@ class AddPondPage extends StatelessWidget {
           ),
           body: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Stepper(
-                  currentStep: controller.currentStep.value,
-                  onStepContinue: controller.nextStep,
-                  onStepCancel: controller.previousStep,
-                  onStepTapped: controller.tapStep,
-                  steps: [
-                    Step(
-                      title: const Text('Informasi Kolam'),
-                      content: PondInfoStep(
-                        setName: controller.setName,
-                        setAddress: controller.setAddress,
-                        setCity: controller.setCity,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Stepper(
+                    currentStep: controller.currentStep.value,
+                    onStepContinue: controller.nextStep,
+                    onStepCancel: controller.previousStep,
+                    onStepTapped: controller.tapStep,
+                    physics: const ClampingScrollPhysics(),
+                    steps: [
+                      Step(
+                        title: const Text('Informasi Kolam'),
+                        content: PondInfoStep(
+                          setName: controller.setName,
+                          setAddress: controller.setAddress,
+                          setCity: controller.setCity,
+                        ),
                       ),
-                    ),
-                    Step(
-                      title: const Text('Status Kolam'),
-                      content: PondStatusStep(
-                        setStatus: controller.setIsFilled,
-                        status: controller.isFilled.value,
+                      Step(
+                        title: const Text('Status Kolam'),
+                        content: PondStatusStep(
+                          setStatus: controller.setIsFilled,
+                          status: controller.isFilled.value,
+                        ),
                       ),
-                    ),
-                    Step(
-                      title: const Text('Perangkat Kolam'),
-                      content: PondDeviceStep(
-                        deviceId: controller.deviceId.value,
-                        setDeviceId: controller.setDeviceId,
+                      Step(
+                        title: const Text('Perangkat Kolam'),
+                        content: PondDeviceStep(
+                          deviceId: controller.deviceId.value,
+                          setDeviceId: controller.setDeviceId,
+                        ),
                       ),
-                    ),
-                    Step(
-                      title: const Text('Gambar Kolam'),
-                      content: PondImageStep(
-                        imagePath: controller.imagePath.value,
-                        setImagePath: controller.setImagePath,
+                      Step(
+                        title: const Text('Gambar Kolam'),
+                        content: PondImageStep(
+                          imagePath: controller.imagePath.value,
+                          setImagePath: controller.setImagePath,
+                        ),
                       ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           )
         );
