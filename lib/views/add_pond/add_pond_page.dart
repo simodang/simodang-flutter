@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simodang_flutter/views/add_pond/add_pond_controller.dart';
+import 'package:simodang_flutter/views/widgets/steps/pond_confirm_step.dart';
 import 'package:simodang_flutter/views/widgets/steps/pond_device_step.dart';
 import 'package:simodang_flutter/views/widgets/steps/pond_image_step.dart';
 import 'package:simodang_flutter/views/widgets/steps/pond_info_step.dart';
@@ -60,6 +61,17 @@ class AddPondPage extends StatelessWidget {
                           setImagePath: controller.setImagePath,
                         ),
                       ),
+                      Step(
+                        title: const Text('Konfirmasi'),
+                        content: PondConfirmStep(
+                          name: controller.name.value,
+                          address: controller.address.value,
+                          city: controller.city.value,
+                          isFilled: controller.isFilled.value,
+                          deviceId: controller.deviceId.value,
+                          imagePath: controller.imagePath.value,
+                        ),
+                      )
                     ],
                   )
                 ],

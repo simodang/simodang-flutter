@@ -11,7 +11,7 @@ class AddPondController extends GetxController {
   RxString imagePath = ''.obs;
 
   void nextStep() {
-    if (currentStep.value == 3) return;
+    if (currentStep.value == 4) return;
     currentStep.value++;
     update();
   }
@@ -19,6 +19,7 @@ class AddPondController extends GetxController {
   void previousStep() {
     if (currentStep.value == 0) return;
     if (currentStep.value == 2) setDeviceId('');
+    if (currentStep.value == 3) setImagePath('');
     currentStep.value--;
     update();
   }
