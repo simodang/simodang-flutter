@@ -10,9 +10,13 @@ class MonitorController extends GetxController {
   }
 
   @override
-  void onInit() {
-    super.onInit();
+  void onReady() {
+    super.onReady();
     ponds.value = Get.find<PondState>().ponds;
     update();
+
+    ever(Get.find<PondState>().ponds, (_) {
+      update();
+    });
   }
 }

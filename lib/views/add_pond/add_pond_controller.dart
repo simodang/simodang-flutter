@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:simodang_flutter/data/datasources/remote/pond/pond_remote_data_source.dart';
+import 'package:simodang_flutter/data/models/create_pond.dart';
+import 'package:simodang_flutter/state/pond_state.dart';
 
 class AddPondController extends GetxController {
   RxInt currentStep = 0.obs;
@@ -11,7 +14,10 @@ class AddPondController extends GetxController {
   RxString imagePath = ''.obs;
 
   void nextStep() {
-    if (currentStep.value == 4) return;
+    if (currentStep.value == 4) {
+      submit();
+      return;
+    }
     currentStep.value++;
     update();
   }
@@ -57,5 +63,31 @@ class AddPondController extends GetxController {
   void setImagePath(String value) {
     imagePath.value = value;
     update();
+  }
+
+  bool get isStep1Valid => name.isNotEmpty && address.isNotEmpty && city.isNotEmpty;
+
+  Future<void> submit() async {
+    if (!isStep1Valid) {
+      Get.snackbar('Error', 'Please fill all fields');
+      return;
+    }
+
+    final pond = CreatePond(
+      name: name.value,
+      address: address.value,
+      city: city.value,
+      isFilled: isFilled.value,
+      deviceId: deviceId.value == '' ? null : deviceId.value,
+      imageUrl: 'https://placehold.co/600x400/png',
+    );
+
+    try {
+      await PondRemoteDataSource().createPond(pond);
+      await Get.find<PondState>().fetchPonds();
+      Get.back();
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
   }
 }
