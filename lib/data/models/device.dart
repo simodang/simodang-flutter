@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:simodang_flutter/data/models/pond.dart';
 
 part 'device.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Device {
   final String id;
   final String name;
@@ -32,6 +33,7 @@ class Device {
   @JsonKey(fromJson: double.parse)
   final double turbiditiesHigh;
   final String createdAt;
+  final Pond? pond;
 
   Device({
     required this.id,
@@ -52,6 +54,7 @@ class Device {
     required this.turbiditiesLow,
     required this.turbiditiesHigh,
     required this.createdAt,
+    this.pond,
   });
 
   factory Device.fromJson(Map<String, dynamic> json) => _$DeviceFromJson(json);

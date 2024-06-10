@@ -5,7 +5,7 @@ class DeviceRemoteDataSource {
   Future<List<Device>> getDevices() async {
     try {
       final response = await DioClient().get(
-        "/devices",
+        "/devices/v2",
       );
       final devices = (response.data as List)
           .map((e) => Device.fromJson(e as Map<String, dynamic>))

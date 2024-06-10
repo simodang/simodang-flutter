@@ -21,12 +21,23 @@ class SelectDevicePage extends StatelessWidget {
             itemCount: controller.devices.length,
             itemBuilder: (context, index) {
               final device = controller.devices[index];
+
               return ListTile(
-                title: Text(device.name),
-                subtitle: Text(device.id),
-                onTap: () {
-                  controller.selectDevice(device.id);
-                },
+                title: Text(
+                  device.name,
+                  style: TextStyle(
+                    color: device.pond == null ? null : Colors.grey,
+                  ),
+                ),
+                subtitle: Text(
+                  device.id,
+                  style: TextStyle(
+                    color: device.pond == null ? null : Colors.grey,
+                  ),
+                ),
+                onTap: device.pond == null
+                    ? () => controller.selectDevice(device.id)
+                    : null,
               );
             },
           ),
