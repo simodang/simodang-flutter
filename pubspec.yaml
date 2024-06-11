@@ -50,6 +50,9 @@ dependencies:
   syncfusion_flutter_datepicker: ^25.2.4
   qr_mobile_vision: ^5.0.1
   image_picker: ^1.1.2
+  firebase_storage: ^11.7.7
+  path: any
+  mime: any
 
 dev_dependencies:
   flutter_test:

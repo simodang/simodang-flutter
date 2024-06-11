@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:simodang_flutter/data/datasources/remote/pond/pond_remote_data_source.dart';
 import 'package:simodang_flutter/data/models/create_pond.dart';
 import 'package:simodang_flutter/state/pond_state.dart';
+import 'package:simodang_flutter/utils/firebase_upload/firebase_upload.dart';
 
 class AddPondController extends GetxController {
   RxInt currentStep = 0.obs;
@@ -12,6 +13,7 @@ class AddPondController extends GetxController {
   RxBool isFilled = false.obs;
   RxString deviceId = ''.obs;
   RxString imagePath = ''.obs;
+  RxString uploadedUrl = ''.obs;
 
   void nextStep() {
     if (currentStep.value == 4) {
@@ -65,6 +67,10 @@ class AddPondController extends GetxController {
     update();
   }
 
+  void setUploadedUrl(String value) {
+    uploadedUrl.value = value;
+  }
+
   bool get isStep1Valid => name.isNotEmpty && address.isNotEmpty && city.isNotEmpty;
 
   Future<void> submit() async {
@@ -73,13 +79,18 @@ class AddPondController extends GetxController {
       return;
     }
 
+    if (imagePath.isNotEmpty) {
+      final url = await FirebaseUpload().uploadImage(imagePath.value);
+      setUploadedUrl(url);
+    }
+
     final pond = CreatePond(
       name: name.value,
       address: address.value,
       city: city.value,
       isFilled: isFilled.value,
       deviceId: deviceId.value == '' ? null : deviceId.value,
-      imageUrl: 'https://placehold.co/600x400/png',
+      imageUrl: uploadedUrl.value == '' ? 'https://placehold.co/600x400/png' : uploadedUrl.value,
     );
 
     try {
