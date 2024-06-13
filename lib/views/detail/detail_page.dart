@@ -19,6 +19,7 @@ class DetailPage extends StatelessWidget {
             actions: [
               if (controller.pond.value != null)
                 DetailMenuWidget(
+                  pondId: controller.pond.value?.id ?? "",
                   isDeviceEditable: controller.pond.value?.deviceId != null,
                 )
             ],

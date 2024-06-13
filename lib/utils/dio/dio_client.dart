@@ -17,8 +17,7 @@ class DioClient {
     String uri, {
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
-    }
-  ) async {
+  }) async {
     try {
       final response = await _dio.post(
         uri,
@@ -35,11 +34,28 @@ class DioClient {
   Future<Response<dynamic>> get(
     String uri, {
     Map<String, dynamic>? queryParameters,
-    }
-  ) async {
+  }) async {
     try {
       final response = await _dio.get(
         uri,
+        queryParameters: queryParameters,
+      );
+
+      return response;
+    } on DioException {
+      rethrow;
+    }
+  }
+
+  Future<Response<dynamic>> patch(
+    String uri, {
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      final response = await _dio.patch(
+        uri,
+        data: data,
         queryParameters: queryParameters,
       );
 

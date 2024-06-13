@@ -7,6 +7,8 @@ import 'package:simodang_flutter/views/date_picker/date_picker_binding.dart';
 import 'package:simodang_flutter/views/date_picker/date_picker_page.dart';
 import 'package:simodang_flutter/views/detail/detail_binding.dart';
 import 'package:simodang_flutter/views/detail/detail_page.dart';
+import 'package:simodang_flutter/views/edit_pond/edit_pond_binding.dart';
+import 'package:simodang_flutter/views/edit_pond/edit_pond_page.dart';
 import 'package:simodang_flutter/views/home/home_binding.dart';
 import 'package:simodang_flutter/views/home/home_page.dart';
 import 'package:simodang_flutter/views/login/login_binding.dart';
@@ -55,6 +57,11 @@ class Pages {
       name: '/qr',
       page: () => const QrPage(),
       binding: QrBinding(),
-    )
+    ),
+    GetPage(
+      name: '/edit-pond',
+      page: () => const EditPondPage(),
+      binding: EditPondBinding(),
+    ),
   ];
 }

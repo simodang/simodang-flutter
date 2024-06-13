@@ -1,4 +1,5 @@
 import 'package:simodang_flutter/data/models/create_pond.dart';
+import 'package:simodang_flutter/data/models/update_pond.dart';
 import 'package:simodang_flutter/data/models/pond.dart';
 import 'package:simodang_flutter/utils/dio/dio_client.dart';
 
@@ -37,6 +38,19 @@ class PondRemoteDataSource {
       );
       final newPond = Pond.fromJson(response.data as Map<String, dynamic>);
       return newPond;
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  Future<Pond> updatePond(String id, UpdatePond pond) async {
+    try {
+      final response = await DioClient().patch(
+        "/ponds/$id",
+        data: pond.toJson(),
+      );
+      final updatedPond = Pond.fromJson(response.data as Map<String, dynamic>);
+      return updatedPond;
     } catch (_) {
       rethrow;
     }

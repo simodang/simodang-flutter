@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DetailMenuWidget extends StatelessWidget {
   const DetailMenuWidget({
     super.key,
+    required this.pondId,
     required this.isDeviceEditable,
   });
 
+  final String pondId;
   final bool isDeviceEditable;
 
   @override
@@ -13,8 +16,13 @@ class DetailMenuWidget extends StatelessWidget {
     return PopupMenuButton(
       itemBuilder: (context) {
         return [
-          const PopupMenuItem(
-            child: Text("Edit Kolam"),
+          PopupMenuItem(
+            child: const Text("Edit Kolam"),
+            onTap: () {
+              Get.toNamed('/edit-pond', arguments: {
+                'pondId': pondId,
+              });
+            },
           ),
           PopupMenuItem(
             enabled: isDeviceEditable,
